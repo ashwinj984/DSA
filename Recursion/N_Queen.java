@@ -1,6 +1,6 @@
 import java.util.*;
 public class N_Queen {
-	public static boolean N_queen1(int[][] a, int n,int rows) {
+	public static void N_queen1(int[][] a, int n,int rows) {
 		if(rows == n)
 		{
 			for(int i = 0; i < n; i++)
@@ -11,7 +11,8 @@ public class N_Queen {
 				}
 				System.out.println();
 			}
-			return true;
+			System.out.println();
+			return ;
 		}
 		for(int i = 0; i < a.length; i++)
 		{
@@ -19,14 +20,13 @@ public class N_Queen {
 			if(check(a,rows,n,i) == true) {
 				a[rows][i] = 1;
 			
-			boolean agli_Queen_kai_liye_check_kar = N_queen1(a,n,rows+1);
-			if(agli_Queen_kai_liye_check_kar == true) {
-				return true;
-			}
-			}
-			
+			 N_queen1(a,n,rows+1);
 			// agli queen agar nhi rakh paye to pahli wali ko change karo
 			a[rows][i] = 0;
+		
+			}
+			
+			
 		}
 		return false;
 		}
@@ -70,8 +70,7 @@ public class N_Queen {
 
 	public static void main(String[] args) {
 		int[][] boards = new int[2][2];
-		if(N_queen1(boards,2,0) == false)
-			System.out.println("Queen cannot be fitted without attack");
+		N_queen1(boards,2,0);		
 		}
 
 	}

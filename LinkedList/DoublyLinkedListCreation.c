@@ -16,6 +16,8 @@ void create(){
         newnode = (Node*) malloc(sizeof(Node));
         printf("Enter data for Doubly Linked List: ");
         scanf("%d",&newnode->data);
+        newnode->prev = 0;
+        newnode->next = 0;
         if(head == 0){
             head =  temp = newnode;
         }

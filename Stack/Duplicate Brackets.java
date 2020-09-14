@@ -1,14 +1,21 @@
+import java.io.*;
 import java.util.*;
-public class Stack1 {
-	public static void main(String[] args) {
-		String s = "(a + b) + ((c + d))";
+
+public class Main {
+
+    public static void main(String[] args) throws Exception {
+
+
+		Scanner scn = new Scanner(System.in);
+		String s = scn.nextLine();
 		Stack<Character> st = new Stack<>();
 		
-		for(int  i = 0; i<= s.length(); i++) {
+		for(int  i = 0; i< s.length(); i++) {
 			char ch = s.charAt(i);
 			if(ch ==')') {
 				if(st.peek() == '(') {
-					System.out.println("True");
+					System.out.println(true);
+					return;
 				}
 				else {
 					while(st.peek()!='(') {
@@ -25,7 +32,7 @@ public class Stack1 {
 			
 		}
 		
-		System.out.println("False");
+		System.out.println(false);
 	}
 
 }

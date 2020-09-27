@@ -1,4 +1,9 @@
- public static Node construct(int[] arr) {
+ private static class Node {
+    int data;
+    ArrayList<Node> children = new ArrayList<>();
+  }
+
+public static Node construct(int[] arr) {
     Node root = null;
 
     Stack<Node> st = new Stack<>();

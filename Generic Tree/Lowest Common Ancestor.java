@@ -1,0 +1,19 @@
+// Before reading this function first read how to find Node To Root Path Code
+//Then only you will be able to understand it
+
+// here d1 and d2 are the value
+// node is the root
+public static int lca(Node node, int d1, int d2) {
+    ArrayList<Integer> p1 = nodeToRootPath(node,d1);
+    ArrayList<Integer> p2 = nodeToRootPath(node,d2);
+    int i = p1.size() - 1;
+    int j = p2.size() - 1;
+    while(i >= 0 && j >= 0 && p1.get(i) == p2.get(j)){
+        i--;
+        j--;
+    }
+    i++;
+    j++;
+    
+    return p1.get(i);
+  }

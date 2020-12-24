@@ -7,9 +7,9 @@ public class Main {
         String key = "";
         for (int i = 1; i < str.length(); i++) {
             char curr = str.charAt(i);
-            char prev = str.charAt(i);
+            char prev = str.charAt(i-1);
             int diff = curr - prev;
-            if (diff < 'a') {
+            if (diff < 0) {
                 diff += 26;
             }
 
@@ -21,20 +21,20 @@ public class Main {
     }
     public static ArrayList < ArrayList < String >> groupShiftedStrings(String[] strs) {
         HashMap < String, ArrayList < String > > map = new HashMap < > ();
-        for(String str : strs){
+        for (String str: strs) {
             String key = getKey(str);
-            if(map.containsKey(key) == false){
-                ArrayList<String> list = new ArrayList<>();
+            if (map.containsKey(key) == false) {
+                ArrayList < String > list = new ArrayList < > ();
                 list.add(str);
-                map.put(key,list);
-            }else{
-                ArrayList<String> list = map.get(key);
+                map.put(key, list);
+            } else {
+                ArrayList < String > list = map.get(key);
                 list.add(str);
             }
         }
-        
-        ArrayList<ArrayList<String>> res = new ArrayList<>();
-        for(ArrayList<String> list : map.values()){
+
+        ArrayList < ArrayList < String >> res = new ArrayList < > ();
+        for (ArrayList < String > list: map.values()) {
             res.add(list);
         }
         return res;

@@ -1,0 +1,39 @@
+import java.util.*;
+
+class Main {
+    public static class ListNode {
+        int val = 0;
+        ListNode next = null;
+
+        ListNode(int val) {
+            this.val = val;
+        }
+    }
+
+    public static ListNode midNode(ListNode head) {
+        ListNode s = head;
+        ListNode f = head;
+        while(f.next != null && f.next.next != null){
+            s = s.next;
+            f = f.next.next;
+        }
+        return s;
+    }
+
+    public static void main(String[] args) {
+        Scanner scn = new Scanner(System.in);
+        int n = scn.nextInt();
+        ListNode dummy = new ListNode(-1);
+        ListNode prev = dummy;
+        while (n-- > 0) {
+            prev.next = new ListNode(scn.nextInt());
+            prev = prev.next;
+        }
+
+        ListNode head = midNode(dummy.next);
+        while (head != null) {
+            System.out.print(head.val + " ");
+            head = head.next;
+        }
+    }
+}

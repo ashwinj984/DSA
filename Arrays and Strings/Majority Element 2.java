@@ -45,7 +45,7 @@ public class Main {
         if(freqMoreThanNB2(arr,val1)){
             res.add(val1);
         }
-        if(freqMoreThanNB2(arr,val2)){
+        if(freqMoreThanNB2(arr,val2) && val1 != val2){
             res.add(val2);
         }
         return res;

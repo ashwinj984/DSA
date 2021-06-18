@@ -37,6 +37,7 @@ class Solution {
         ArrayList<Edge>[] graph = buildGraph(times,n);
         boolean[] visited = new boolean[n + 1];
       // Djikstra's Algrithm
+        
         PriorityQueue<Pair> pq = new PriorityQueue<>();
         pq.add(new Pair(k, 0));
         int count = 0;
@@ -58,5 +59,39 @@ class Solution {
             
         }
         return -1;
+    }
+}
+
+
+
+// 2nd Approach Using Bellman Ford
+class Solution {
+    public int networkDelayTime(int[][] times, int n, int k) {
+        // logic start
+        int[] dp = new int[n + 1];
+        Arrays.fill(dp, Integer.MAX_VALUE);
+        dp[k] = 0;
+        for(int i = 0; i <= n; i++){//i - 1 iterations
+            for(int j = 0;  j  < times.length; j++){// for every index
+                int u = times[j][0];
+                int v = times[j][1];
+                int wt = times[j][2];
+                if(dp[u] == Integer.MAX_VALUE){
+                    continue;
+                }
+                if(dp[u] + wt < dp[v]){
+                    dp[v] = dp[u] + wt;
+                }
+            }
+        }
+        // logic end
+        int max = -1;
+        for(int i = 1; i <= n; i++){
+            if(dp[i] == Integer.MAX_VALUE){
+                return -1;
+            }else
+                max = Math.max(max, dp[i]);
+        }
+        return max;
     }
 }

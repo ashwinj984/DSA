@@ -31,8 +31,8 @@ public class Main {
 		}
 		int cheeries = arr[row][col];
 		arr[row][col] = 0;
-		cheeryPickup1(row, col - 1, arr, cherryCollectedSoFar + cheeries);
-		cheeryPickup1(row - 1, col, arr, cherryCollectedSoFar + cheeries);
+		helper(row, col - 1, arr, cherryCollectedSoFar + cheeries);
+		helper(row - 1, col, arr, cherryCollectedSoFar + cheeries);
 		arr[row][col] = cheeries;
 	}
 
